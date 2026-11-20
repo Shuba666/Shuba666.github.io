@@ -1,0 +1,14 @@
+# local tooling and screenshots
+.DS_Store
+.claude/
+.taste-skill/
+shots/
+# kit parts this page does not load (demos, stock photos, 3D objects, scenes)
+assets/photos/
+assets/objects/
+assets/scenes/
+assets/components/
+assets/layout/img/
+assets/moments/_demo/
+assets/icons/demo/
+assets/icons/demo.html

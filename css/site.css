@@ -1,0 +1,62 @@
+/* page CSS shared by index.html (en) and ru.html (ru); the :root block is as start.mjs printed it */
+:root {
+--p-bg: #eef0f3; --p-surface: #e2e5ea; --p-ink: #0b0c0e; --p-muted: #5d6470;
+--p-accent: #1f2de6; --p-accent-ink: #ffffff; --p-action: #1f2de6; --p-action-ink: #ffffff;
+--p-inv-bg: #0b0c0e; --p-inv-surface: #17181a; --p-inv-ink: #eef0f3; --p-inv-muted: #8e8f92;
+--p-inv-accent: #eef0f3; --p-inv-accent-ink: #0b0c0e; --p-inv-action: #eef0f3; --p-inv-action-ink: #0b0c0e;
+--font-display: "Source Serif 4", Georgia, serif;
+--font-text: "Libre Franklin", system-ui, sans-serif;
+--display-weight: 400;
+--display-tracking: -0.02em;
+--display-tracking-xl: -0.026em;
+--font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+/* the hero: the ASCII portrait is the picture layer, on the page ground */
+.hero--photo { background: var(--p-bg); }
+/* the facts sit in the flow under the words, so on a short window the buttons push them down instead of overlapping */
+@media (min-width: 1024px) {
+  .hero--photo[data-calm="left"] > .wrap > .hero-text { justify-content: flex-start; }
+  .hero--photo[data-calm="left"] .hero__text { margin-block: auto; }
+  .hero--photo[data-calm="left"] .hero__facts { position: static; margin-top: var(--s-6); }
+  .hero--photo h1 { font-size: min(var(--ly-h1-xl), 9.6svh); }
+}
+.hero--photo > canvas.hero__bg { display: block; }
+.ascii-pause { position: absolute; z-index: 2; right: 0; top: 0; display: inline-flex; align-items: center; gap: var(--s-2); min-height: 44px; padding: 0 var(--s-4); font: 500 var(--t-label)/1 var(--font-mono); color: var(--p-muted); border: 1px solid color-mix(in oklab, var(--p-ink) 24%, transparent); background: var(--p-surface); border-radius: var(--r-sm); cursor: pointer; }
+.ascii-pause:hover { color: var(--p-ink); border-color: color-mix(in oklab, var(--p-ink) 40%, transparent); }
+@media (max-width: 1023px) { .ascii-pause { top: -52px; } }
+/* the chapters at rest on a phone hold two whole screens */
+@media (max-width: 639px) { main > #experience[data-moment]:not(.is-live) { min-height: 200lvh; } }
+
+/* terminal panels inside the cards */
+#work .panel { height: 264px; background: var(--p-ink); }
+#work .panel::before, #work .panel::after { display: none; }
+.tools__flow { display: block; width: 100%; height: 160px; margin-top: var(--s-7); border-radius: var(--r-md); }
+@media (max-width: 1279px), (max-height: 799px) { .tools__flow { display: none; } }
+.about__globe { display: block; width: 100%; aspect-ratio: 1; max-height: 640px; border-radius: var(--r-md); }
+@media (max-width: 1023px) { .about__globe { aspect-ratio: 3 / 1; margin-top: var(--s-6); } }
+@media (max-width: 639px) { .about__globe { aspect-ratio: 4 / 1; } }
+.term { margin: 0; padding: var(--s-6) var(--s-6); font: 400 14px/1.9 var(--font-mono); color: #c9cdd6; white-space: pre; overflow: hidden; height: 100%; }
+.term .p { color: #7f8798; }
+.term .ok { color: #7fd6a4; }
+.term .bad { color: #ff8a7a; }
+.term .hi { color: #8fa0ff; }
+.term .is-off { visibility: hidden; }
+@media (max-width: 639px) { #work .panel { height: 196px; } .term { font-size: 11px; padding: var(--s-4); } }
+
+/* chapter scenes */
+.mo-pc__visual > canvas { display: block; width: 100%; aspect-ratio: 4 / 3; }
+[data-moment="pinned-chapters"]:not(.is-live) .mo-pc__visual > canvas { max-height: 30svh; }
+[data-moment="pinned-chapters"].is-live .mo-pc__visual > canvas { height: 100%; aspect-ratio: auto; }
+@media (max-width: 639px) { [data-moment="pinned-chapters"]:not(.is-live) .mo-pc__visual > canvas { aspect-ratio: 16 / 9; max-height: 26svh; } }
+
+/* tools */
+.tools__label { font: 500 var(--t-label)/1.4 var(--font-mono); color: var(--muted); margin-bottom: var(--s-4); }
+.tools__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-1); }
+.tools__list li { display: flex; align-items: center; gap: var(--s-3); min-height: 40px; font-size: var(--t-body); border-bottom: 1px solid var(--line); padding-bottom: var(--s-1); }
+.tools__list .ic { width: 24px; height: 24px; object-fit: contain; flex: none; }
+@media (max-width: 1023px) { .tools__group { grid-column: auto / span 6; } }
+@media (max-width: 639px) { .tools__list li { min-height: 32px; font-size: var(--t-small); } }
+
+/* language switch */
+.lang-switch { font: 500 var(--t-label)/1 var(--font-mono); min-height: 44px; display: inline-flex; align-items: center; padding: 0 var(--s-3); }
+
